@@ -1,35 +1,71 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    margin: 4rem 3rem;
-  }
-  
+  font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10rem 0;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 990px; /* Adjust the maximum width as needed */
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s;
+}
+
+.slide {
+  padding: 15px;
+}
+
+img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+  color: white;
+}
+
+@media (max-width: 768px) {
   .slider-container {
-    width: 300px;
-    overflow: hidden;
-    position: relative;
+    width: 100%;
+    max-width: 330px; /* Adjust the maximum width as needed */
   }
-  
+
   .slider {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s;
   }
-  
   .slide {
-    min-width: 300px;
+    padding: 7.5px;
   }
-  
+
   img {
-    width: 100%;
-    height: auto;
+    width: 100px;
+    height: 50px;
   }
-  
+
+  span {
+    font-size: 3px;
+  }
+
   button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+    font-size: 7px;
+    margin: 5px;
+    padding: 5px 10px;
   }
-  
+}

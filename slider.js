@@ -1,41 +1,36 @@
 const sliderContainer = document.querySelector(".slider-container");
 const slider = document.querySelector(".slider");
-const slides = document.querySelectorAll(".slide");
+const slide = document.querySelector(".slide");
 const prevButton = document.querySelector(".prev-button");
 const nextButton = document.querySelector(".next-button");
 
+const images = document.querySelectorAll(".slide");
+const imageWidth = images[0].clientWidth;
 let currentIndex = 0;
-const slideWidth = slides[0].clientWidth;
-const totalSlides = slides.length;
 
-function goToSlide(index) {
-  if (index < 0) {
-    index = totalSlides - 1;
-  } else if (index >= totalSlides) {
-    index = 0;
+function slideNext() {
+  if (currentIndex === 6) {
+    currentIndex = 0 % images.length;
+    slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+  } else {
+    currentIndex = (currentIndex + 1) % images.length;
+    slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
   }
-
-  slider.style.transform = `translateX(-${index * slideWidth}px)`;
-  currentIndex = index;
 }
 
-function nextSlide() {
-  goToSlide(currentIndex + 1);
+function slidePrev() {
+  currentIndex = (currentIndex - 3 + images.length) % images.length;
+  slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
 }
 
-function prevSlide() {
-  goToSlide(currentIndex - 1);
-}
+nextButton.addEventListener("click", slideNext);
+prevButton.addEventListener("click", slidePrev);
 
-nextButton.addEventListener("click", nextSlide);
-prevButton.addEventListener("click", prevSlide);
-
-let autoSlideInterval = setInterval(nextSlide, 3000);
-
+let autoSlideInterval = setInterval(slideNext, 3000); // Automatically slide every 3 seconds
 sliderContainer.addEventListener("mouseover", () => {
   clearInterval(autoSlideInterval);
 });
 
 sliderContainer.addEventListener("mouseout", () => {
-  autoSlideInterval = setInterval(nextSlide, 3000);
+  autoSlideInterval = setInterval(slideNext, 3000);
 });
