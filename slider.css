@@ -40,7 +40,7 @@ button:hover {
   color: white;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 868px) {
   .slider-container {
     width: 100%;
     max-width: 330px; /* Adjust the maximum width as needed */

@@ -6,9 +6,11 @@ const nextButton = document.querySelector(".next-button");
 
 const images = document.querySelectorAll(".slide");
 const imageWidth = images[0].clientWidth;
+const windowWidth = window.outerWidth;
 let currentIndex = 0;
 
 function slideNext() {
+  console.log(windowWidth);
   if (currentIndex === 6) {
     currentIndex = 0 % images.length;
     slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
